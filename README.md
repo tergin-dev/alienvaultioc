@@ -27,7 +27,7 @@ pip install requests
 ### 3️⃣ Configure API Key
 Edit **`otx_full_integration.py`** and replace the `OTX_API_KEY` variable with your **AlienVault OTX API key**:
 ```python
-OTX_API_KEY = "YOUR_OTX_API_KEY_HERE"
+OTX_API_KEY = "<ENTER-API-KEY>"
 ```
 
 ### 4️⃣ Run the Script Manually
