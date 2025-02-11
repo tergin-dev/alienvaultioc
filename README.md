@@ -45,7 +45,7 @@ crontab -e
 ```
 Add the following line to fetch updates every **6 hours**:
 ```
-0 */6 * * * /usr/bin/python3 /var/log/otx_full_integration.py
+0 */6 * * * /usr/bin/python3 /path/to/otx_full_integration.py
 ```
 
 ## File Structure
