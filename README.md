@@ -70,7 +70,7 @@ Ensure Wazuh is set up to **monitor these IOC lists** by adding them to your Waz
 ### 🔹 Permission Issues?
 Run the script as root or use `sudo`:
 ```bash
-sudo python otx_full_integration.py
+sudo python3 otx_full_integration.py
 ```
 
 ### 🔹 No Data Fetching?
