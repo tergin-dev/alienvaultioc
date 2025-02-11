@@ -86,6 +86,10 @@ sudo python otx_full_integration.py
 
 ---
 
+<img width="1202" alt="image" src="https://github.com/user-attachments/assets/a8be24e3-cd12-4492-8890-47362e6a21b4" />
+
+
+
 ## 📌 Notes
 - This script **only includes IPv4** addresses (IPv6 is discarded).  
 - The fetched data is **incremental**, meaning only new IOCs are retrieved after the last fetch.  
