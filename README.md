@@ -14,7 +14,7 @@ This script integrates **AlienVault OTX (Open Threat Exchange)** with **Wazuh**,
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/tergin-dev/OTX-Wazuh-Integration.git
+git clone https://github.com/tergin-dev/alienvaultioc.git
 cd OTX-Wazuh-Integration
 ```
 
