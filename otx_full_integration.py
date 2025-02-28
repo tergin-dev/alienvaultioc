@@ -26,6 +26,7 @@ os.makedirs(os.path.dirname(IOC_JSON_FILE), exist_ok=True)
 os.makedirs(os.path.dirname(IOC_DOMAIN_LIST), exist_ok=True)
 os.makedirs(os.path.dirname(IOC_IP_LIST), exist_ok=True)
 os.makedirs(os.path.dirname(IOC_HASH_LIST), exist_ok=True)
+os.makedirs(os.path.dirname(LAST_FETCH_FILE), exist_ok=True)
 
 # Function to log messages to a file
 def log_message(message):
