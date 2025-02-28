@@ -118,7 +118,32 @@ def extract_iocs():
             hash_file.write('\n'.join(new_hashes) + '\n')
         log_message(f"Added {len(new_hashes)} new file hashes.")
 
-# Function to fetch OTX pulses and dynamically update Wazuh IOC lists
+# Max file size (1GB)
+MAX_FILE_SIZE = 1 * 1024 * 1024 * 1024  # 1GB in bytes
+
+# Function to enforce max file size for IOC JSON
+def enforce_file_size_limit():
+    if os.path.exists(IOC_JSON_FILE):
+        file_size = os.path.getsize(IOC_JSON_FILE)
+        if file_size > MAX_FILE_SIZE:
+            log_message(f"File {IOC_JSON_FILE} exceeds 1GB. Trimming old data...")
+
+            try:
+                with open(IOC_JSON_FILE, 'r') as ioc_file:
+                    existing_data = json.load(ioc_file)
+
+                # Keep only the latest 50% of entries (adjust as needed)
+                trimmed_data = existing_data[len(existing_data) // 2:]
+
+                with open(IOC_JSON_FILE, 'w') as ioc_file:
+                    json.dump(trimmed_data, ioc_file, indent=2)
+
+                log_message(f"Trimmed {len(existing_data) - len(trimmed_data)} old entries.")
+
+            except (json.JSONDecodeError, FileNotFoundError) as e:
+                log_message(f"Error trimming file: {e}")
+
+# Updated fetch function to check file size
 def fetch_new_pulses():
     page = 1
     last_fetch = get_last_fetch_timestamp()
@@ -150,6 +175,8 @@ def fetch_new_pulses():
                     all_pulses.extend(results)
                     with open(IOC_JSON_FILE, 'w') as ioc_file:
                         json.dump(existing_data + all_pulses, ioc_file, indent=2)
+
+                    enforce_file_size_limit()  # Check and trim if needed
 
                     extract_iocs()
                     page += 1
